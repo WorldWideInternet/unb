@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Iframe Example</title>
+</head>
+<body>
+
+<script>
+    /**
+     * Function to create an iframe acting as a proxy for a given URL.
+     *
+     * @param {string} url - The URL to be proxied.
+     * @returns {string} The HTML code for the proxy iframe.
+     */
+    function createProxyIframe(url) {
+        // Generate a random ID for the iframe
+        const iframeId = `proxyIframe_${Math.floor(Math.random() * 1000000)}`;
+
+        // Create the iframe element
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://your-proxy-server.com/proxy?url=${encodeURIComponent(url)}`;
+        iframe.id = iframeId;
+        iframe.style.display = "none";
+
+        // Append the iframe to the document body
+        document.body.appendChild(iframe);
+
+        // Return the HTML code for the proxy iframe
+        return `<iframe src="https://your-proxy-server.com/proxy?url=${encodeURIComponent(url)}" id="${iframeId}" style="display: none;"></iframe>`;
+    }
+
+    // Usage Example for createProxyIframe
+
+    const urlToProxy = "https://platformerdotio.co";
+    const proxyIframe = createProxyIframe(urlToProxy);
+    console.log(proxyIframe);
+</script>
+
+</body>
+</html>
